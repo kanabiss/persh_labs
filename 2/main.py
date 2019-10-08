@@ -1,14 +1,22 @@
-ifname = "input.txt"
-ofname = "output.txt"
+ifname = "input.txt"	# Имя входного файла
+ofname = "output.txt"	# Имя выходного файла
 
-with open(ifname, "r") as ifile:
-	content = ifile.read()
+with open(ifname, "r") as ifile:	# Знать даже не хочу, как эта херня работает, но в справке написано,
+					# что это что-то вроде try-except, но еще и закроет файл после окончания работы с ним
+	content = ifile.read()		# Пишем все содержимое файла в переменную content
 
+# Напечатаем содержимое
 print(content)
 
+# Открываем файл для записи ответа
 ofile = open(ofname, "w")
 
+# Проходимся по каждому символу и превращаем его в числовое значение
 for i in range(0, len(content)):
+	# ord(c) даст ascii(не уверен насчет юникода, но ascii точно даст) код символа
+	# str(n) превратит этот числовой код в строку
+	# и пишем все эти коды символов через пробел
 	ofile.write(str(ord(content[i]))+' ')
 
+# Закрываем файл
 ofile.close()
