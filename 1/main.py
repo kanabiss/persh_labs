@@ -57,6 +57,8 @@ def SortAndRewrite(file, dict):
 	for k in sorted(dict):	# k - это ключ
 		file.write(dict[k])	# Пишем в файл
 
+	return 1
+
 # Выше были функции, их ты будешь вызывать в своем коде, они выполнятся только тогда, когда ты их вызовешь, ниже - твой код
 
 # Открываем файл с именем filename, режимом чтения и записи 'r+' и юникод кодировкой, т.к. ФИО на русском языке
@@ -66,7 +68,10 @@ f = open(filename, mode="r+", encoding="utf-8")
 phonebook = CreateDictByFile(f)
 
 # Вызываем нашу вторую функцию для записи в файл f отсортированных по фамилии значений из словаря phonebook
-SortAndRewrite(f, phonebook)
+if(SortAndRewrite(f, phonebook) == 1):
+	print("Successuly sorted!")
+else:
+	print("Something went wrong")
 
 # Закрываем файл
 f.close()
